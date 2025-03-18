@@ -12,6 +12,7 @@ print("-------------------------------------------\n")
 
 
 
+
 start_time = input("What is the start time:")
 end_time = input("What is the end time:")
 
@@ -21,14 +22,12 @@ end_time = input("What is the end time:")
 def fetch_and_plot_data(detector, start_time, end_time, threshold=1e-21):
     data = TimeSeries.fetch_open_data(detector, start_time, end_time, cache=True)
     
-    # Bandpass filtr pro odstranění šumu
     filtered_data = data.bandpass(50, 400)
     
-    # Detekce gravitačních vln (nalezení vrcholů)
     peaks, _ = find_peaks(filtered_data.value, height=threshold)
     
-    # Vytvoření grafu
-    plt.figure(figsize=(12, 6))  # Nastavení velikosti grafu
+
+    plt.figure(figsize=(12, 6))  
     plt.plot(filtered_data.times, filtered_data.value, label='Filtered Data')
     
     # Zvýraznění detekovaných signálů

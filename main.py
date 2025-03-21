@@ -30,17 +30,14 @@ def fetch_and_plot_data(detector, start_time, end_time, threshold=1e-21):
     plt.figure(figsize=(12, 6))  
     plt.plot(filtered_data.times, filtered_data.value, label='Filtered Data')
     
-    # Zvýraznění detekovaných signálů
     plt.plot(filtered_data.times.value[peaks], filtered_data.value[peaks], "x", label='Detected Peaks', color='orange')
     
-    # Přidání popisků a mřížky
     plt.title(f'{detector} strain data from {start_time} to {end_time}')
     plt.xlabel('Čas (UTC)')
     plt.ylabel('Amplituda gravitační vlny [strain]')
-    plt.grid(True)  # Přidání mřížky
+    plt.grid(True) 
     plt.legend()
     
-    # Zobrazení grafu
     plt.show()
 
 start_time = 'September 14, 2015, 09:50:45 UTC'
